@@ -1,7 +1,7 @@
 #include "unity.h"
 #include "../src/math_utils.h"
 
-void seUp(void) {}
+void setUp(void) {}
 void tearDown(void) {}
 
 void test_add_two_positive_numbers(void)
