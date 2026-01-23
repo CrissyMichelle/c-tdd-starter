@@ -2,15 +2,21 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -Wpedantic -std=c11 -g
 
 SRC = src/client.c
-TEST_SRC = tests/test_client_args.c tests/unity.c
+UNITY = tests/unity.c
 
-TEST_BIN = test_runner
+TEST_BINS = test_client_args test_client_connect
 
 .PHONY: test clean
 
-test:
-	$(CC) $(CFLAGS) $(SRC) $(TEST_SRC) -o $(TEST_BIN)
-	./$(TEST_BIN)
+test: $(TEST_BINS)
+	./test_client_args
+	./test_client_connect
+
+test_client_args:
+	$(CC) $(CFLAGS) $(SRC) tests/test_client_args.c $(UNITY) -o test_client_args
+
+test_client_connect:
+	$(CC) $(CFLAGS) $(SRC) tests/test_client_connect.c $(UNITY) -o test_client_connect -lpthread
 
 clean:
-	rm -f $(TEST_BIN)
+	rm -f $(TEST_BINS)

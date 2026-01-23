@@ -1,1 +1,14 @@
+# macOS
 .DS_Store
+
+# Test binaries / build output
+test_*
+
+# Debug symbols
+*.dSYM/
+
+# General C artifacts
+*.o
+*.a
+*.so
+*.dylib
